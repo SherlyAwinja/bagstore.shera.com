@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Subcategory;
+use Illuminate\Http\Request;
+
+class MasterSubCategoryController extends Controller
+{
+    public function storesubcat(Request $request){
+        $validate_data = $request->validate(rules:[
+            'subcategory_name' => 'unique:categories|max:100|min:4',
+            'category_id'=> 'required|exists:categories,id',
+        ]);
+
+        Subcategory::create($validate_data);
+
+        return redirect()->back()->with('message', 'Sub Category Added Successfully');
+    }
+
+    public function showsubcategory($id){
+        $subcategory_info = Subcategory::find($id);
+        return view('admin.sub_category.edit', compact('subcategory_info'));
+    }
+
+    public function updatesubcategory(Request $request, $id){
+        $subcategory = Subcategory::findOrfail($id);
+        $validate_data = $request->validate(rules:[
+            'subcategory_name' => 'unique:categories|max:100|min:4',
+            'category_id'=> 'required|exists:categories,id',
+        ]);
+
+        $subcategory->update($validate_data);
+
+        return redirect()->back()->with('message','Sub Category Updated Successflully');
+    }
+
+    public function deletesubcategory($id){
+        Subcategory::findOrfail($id)->delete();
+
+        return redirect()->back()->with('message','Sub Category Deleted Successflully');
+    }
+}
