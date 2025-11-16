@@ -50,6 +50,10 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
         Route::controller(ProductAttributeController::class)->group(function () {
             Route::get('/productattribute/create', 'index')->name('productattribute.create');
             Route::get('/productattribute/manage', 'manage')->name('productattribute.manage');
+            Route::post('/defaultattribute/create', 'createattribute')->name('attribute.create');
+            Route::get('/defaultattribute/{id}', 'showattribute')->name('show.attribute');
+            Route::put('/defaultattribute/update/{id}', 'updateattribute')->name('update.attribute');
+            Route::delete('/defaultattribute/delete/{id}', 'deleteattribute')->name('delete.attribute');
         });
 
         Route::controller(ProductDiscountController::class)->group(function () {

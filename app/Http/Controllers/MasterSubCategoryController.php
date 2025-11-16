@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class MasterSubCategoryController extends Controller
 {
     public function storesubcat(Request $request){
-        $validate_data = $request->validate(rules:[
-            'subcategory_name' => 'unique:categories|max:100|min:4',
+        $validate_data = $request->validate([
+            'subcategory_name' => 'unique:subcategories|max:100|min:4',
             'category_id'=> 'required|exists:categories,id',
         ]);
 
@@ -25,9 +25,8 @@ class MasterSubCategoryController extends Controller
 
     public function updatesubcategory(Request $request, $id){
         $subcategory = Subcategory::findOrfail($id);
-        $validate_data = $request->validate(rules:[
-            'subcategory_name' => 'unique:categories|max:100|min:4',
-            'category_id'=> 'required|exists:categories,id',
+        $validate_data = $request->validate([
+            'subcategory_name' => "unique:subcategories,subcategory_name,{$id}|max:100|min:4",
         ]);
 
         $subcategory->update($validate_data);

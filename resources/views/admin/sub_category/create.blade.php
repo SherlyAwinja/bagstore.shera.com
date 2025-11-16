@@ -21,7 +21,9 @@ Create Sub Category
     @endif
     
     @if (session('success'))
-
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
     @endif
                     <form action="{{ route('store.subcategory') }}" method="POST">
                         @csrf
