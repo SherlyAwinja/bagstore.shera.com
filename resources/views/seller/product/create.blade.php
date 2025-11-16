@@ -3,5 +3,5 @@
     Create Product
 @endsection
 @section('seller_layout')
-    Create Product
+    <livewire:category-subcategory />
 @endsection
