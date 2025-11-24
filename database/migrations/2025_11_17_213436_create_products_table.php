@@ -29,7 +29,7 @@ return new class extends Migration
             $table->boolean('visibility')->default(false);
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
-            $table->enum('status', ['draft', 'published', 'archived']);
+            $table->enum('status', ['draft', 'published']);
             $table->timestamps();
             
         });

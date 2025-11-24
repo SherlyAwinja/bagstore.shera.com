@@ -12,11 +12,14 @@ use App\Http\Controllers\Seller\SellerProductController;
 use App\Http\Controllers\Seller\SellerStoreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\CustomerMainController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MasterCategoryController;
 use App\Http\Controllers\MasterSubCategoryController;
+use App\Livewire\HomepageComponent;
+use App\Livewire\HomeProductFilterComponent;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(HomePageController::class)->group(function () {
+    Route::get('/', 'index')->name('home');
 });
 
 // Admin Routes
@@ -25,6 +28,7 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
         Route::controller(AdminMainController::class)->group(function () {
             Route::get('/dashboard', 'index')->name('admin');
             Route::get('/settings', 'setting')->name('admin.settngs');
+            Route::put('/settings/homepagesetting/update', 'updatehomepagesetting')->name('admin.homepagesetting.update');
             Route::get('/manage/users', 'manage_user')->name('admin.manage.user');
             Route::get('/manahe/stores', 'manage_stores')->name('admin.manage.store');
             Route::get('/cart/history', 'cart_history')->name('admin.cart.history');
@@ -96,7 +100,11 @@ Route::middleware(['auth', 'verified', 'rolemanager:vendor'])->group(function ()
 
         Route::controller(SellerProductController::class)->group(function () {
             Route::get('/product/create', 'index')->name('vendor.product');
+            Route::post('/product/store', 'storeproduct')->name('vendor.product.store');
             Route::get('/product/manage', 'manage')->name('vendor.product.manage');
+            Route::get('/product/edit/{id}', 'edit')->name('vendor.product.edit');
+            Route::put('/product/update/{id}', 'updateproduct')->name('vendor.product.update');
+            Route::delete('/product/delete/{id}', 'destroy')->name('vendor.product.delete');
         });
     });
 });
@@ -117,6 +125,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    // API route for subcategories
+    Route::get('/api/subcategories/{categoryId}', function ($categoryId) {
+        $subcategories = \App\Models\Subcategory::where('category_id', $categoryId)->get();
+        return response()->json($subcategories);
+    });
 });
 
 require __DIR__.'/auth.php';

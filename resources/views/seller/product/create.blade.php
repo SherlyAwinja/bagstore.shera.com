@@ -25,12 +25,12 @@ Add Product
     {{ session('message') }}
 </div>
 @endif
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('vendor.product.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <label for="product_name" class="fw-bold mb-2">Give Name of Your Product</label>
                     <input type="text" class="form-control mb-2" name="product_name"placeholder="Classic Tote Bag">
 
-                    <label for="description" class="fw-bold mb-2">Description of Your Product</label>
+                    <label for="description" class="fw-bold mb-2">Description</label>
                     <textarea name="description" class="form-control mb-2" id="description" cols="30" rows="10"></textarea>
 
                     <label for="images" class="fw-bold mb-2">Upload Your Product Images</label>
@@ -58,9 +58,6 @@ Add Product
 
                     <label for="stock_quantity" class="fw-bold mb-2">Stock Quantity</label>
                     <input type="number" class="form-control mb-2" name="stock_quantity">
-
-                    <label for="product_name" class="fw-bold mb-2">Give Name of Your Product</label>
-                    <input type="text" class="form-control mb-2" name="product_name"placeholder="Classic Tote Bag">
 
                     <label for="slug" class="fw-bold mb-2">Slug</label>
                     <input type="text" class="form-control mb-2" name="slug">
