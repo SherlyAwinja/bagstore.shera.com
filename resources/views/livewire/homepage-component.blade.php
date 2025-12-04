@@ -10,7 +10,7 @@
             <p>Because of store opening carnival, Ecipse providing a huge discounted sell</p>
 
             <div class="float-item">
-              <img src="img/shoe.png" alt="">
+            <img src="{{ asset('home_asset/img/shoe.png') }}" alt="">
             </div>
           </div>
         </div>
@@ -19,7 +19,7 @@
           <div class="card-sm purple mb-3">
             <!-- product image -->
             <div class="product">
-              <img src="img/beanbag.png" alt="">
+              <img src="{{ asset('home_asset/img/beanbag.png') }}" alt="">
             </div>
 
             <div>
@@ -36,7 +36,7 @@
 
             <!-- product image -->
             <div class="product">
-              <img src="img/vr-glass.png" alt="">
+              <img src="{{ asset('home_asset/img/vr-glass.png') }}" alt="">
             </div>
           </div>
         </div>
@@ -74,8 +74,8 @@
           <div class="card-md">
             <!-- image -->
             <div class="product-img">
-              <img src="img/shoe.png" alt="">
-              <img class="glow" src="img/glow.png" alt="">
+              <img src="{{ asset('home_asset/img/shoe.png') }}" alt="">
+              <img class="glow" src="{{ asset('home_asset/img/glow.png') }}" alt="">
             </div>
 
             <h4 class="fw-semibold mb-2">Quip Sports X19</h4>
@@ -104,8 +104,8 @@
           <div class="card-md">
             <!-- image -->
             <div class="product-img">
-              <img src="img/shoe.png" alt="">
-              <img class="glow" src="img/glow.png" alt="">
+              <img src="{{ asset('home_asset/img/shoe.png') }}" alt="">
+              <img class="glow" src="{{ asset('home_asset/img/glow.png') }}" alt="">
             </div>
 
             <h4 class="fw-semibold mb-2">Quip Sports X19</h4>
@@ -134,8 +134,8 @@
           <div class="card-md">
             <!-- image -->
             <div class="product-img">
-              <img src="img/shoe.png" alt="">
-              <img class="glow" src="img/glow.png" alt="">
+              <img src="{{ asset('home_asset/img/shoe.png') }}" alt="">
+              <img class="glow" src="{{ asset('home_asset/img/glow.png') }}" alt="">
             </div>
 
             <h4 class="fw-semibold mb-2">Quip Sports X19</h4>
@@ -164,8 +164,8 @@
           <div class="card-md">
             <!-- image -->
             <div class="product-img">
-              <img src="img/shoe.png" alt="">
-              <img class="glow" src="img/glow.png" alt="">
+              <img src="{{ asset('home_asset/img/shoe.png') }}" alt="">
+              <img class="glow" src="{{ asset('home_asset/img/glow.png') }}" alt="">
             </div>
 
             <h4 class="fw-semibold mb-2">Quip Sports X19</h4>
@@ -194,8 +194,8 @@
           <div class="card-md">
             <!-- image -->
             <div class="product-img">
-              <img src="img/shoe.png" alt="">
-              <img class="glow" src="img/glow.png" alt="">
+              <img src="{{ asset('home_asset/img/shoe.png') }}" alt="">
+              <img class="glow" src="{{ asset('home_asset/img/glow.png') }}" alt="">
             </div>
 
             <h4 class="fw-semibold mb-2">Quip Sports X19</h4>

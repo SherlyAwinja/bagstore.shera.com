@@ -6,7 +6,7 @@
             <div class="col-12">
               <div class="flash-sale-wrap">
                 <h2 class="flash-sale-title">
-                  <img class="d-none d-sm-inline" src="img/icons/flash.svg" alt="">
+                  <img class="d-none d-sm-inline" src="{{ asset('home_asset/img/icons/flash.svg') }}" alt="">
                   <span class="text-white">Flash Sell Ending</span>
                 </h2>
 

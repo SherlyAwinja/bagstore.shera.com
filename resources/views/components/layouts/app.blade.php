@@ -21,6 +21,8 @@
     <!-- main stylesheet -->
     <link rel="stylesheet" href="{{asset('home_asset/css/style.css')}}">
 
+    @livewireStyles
+
     <!-- title -->
     <title>QuickCart || Details</title>
   </head>
@@ -157,28 +159,28 @@
             <!-- dropdown links -->
             <ul class="dropdown-links">
               <li>
-                <a href="#!">Accessories</a>
+                <a href="#!">Bags</a>
               </li>
               <li>
-                <a href="#!">Beauty</a>
+                <a href="#!">Organizers</a>
               </li>
               <li>
-                <a href="#!">Electronics</a>
+                <a href="#!">Backpacks</a>
               </li>
               <li>
-                <a href="#!">Fashion</a>
+                <a href="#!">Luggage</a>
               </li>
               <li>
-                <a href="#!">Kids</a>
+                <a href="#!">Gym Bags</a>
               </li>
               <li>
-                <a href="#!">Shoes</a>
+                <a href="#!">Travel Bags</a>
               </li>
               <li>
                 <a href="#!">Sports</a>
               </li>
               <li>
-                <a href="#!">Watches</a>
+                <a href="#!">Kids Bags</a>
               </li>
             </ul>
           </li>
@@ -235,7 +237,7 @@
             <div class="col-12">
               <div class="flash-sale-wrap">
                 <h2 class="flash-sale-title">
-                  <img class="d-none d-sm-inline" src="img/icons/flash.svg" alt="">
+                  <img class="d-none d-sm-inline" src="{{ asset('home_asset/img/icons/flash.svg') }}" alt="">
                   <span class="text-white">Flash Sell Ending</span>
                 </h2>
 
@@ -274,7 +276,7 @@
         <div class="row">
           <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
             <a class="logo" href="#!">
-              <img src="img/logo.svg" alt="">
+              <img src="{{ asset('home_asset/img/logo.svg') }}" alt="">
               <span>QuickCart</span>
             </a>
 
@@ -355,6 +357,8 @@
 
     <!-- main js -->
     <script src="{{asset('home_asset/js/app.js')}}"></script>
+
+    @livewireScripts
 
     <!-- owl carousel init -->
     <script>

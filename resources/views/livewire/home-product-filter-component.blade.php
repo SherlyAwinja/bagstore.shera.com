@@ -36,8 +36,8 @@
               <div class="card-md">
                 <!-- image -->
                 <div class="product-img">
-                  <img src="img/shoe.png" alt="">
-                  <img class="glow" src="img/glow.png" alt="">
+                  <img src="{{ asset('home_asset/img/shoe.png') }}" alt="">
+                  <img class="glow" src="{{ asset('home_asset/img/glow.png') }}" alt="">
                 </div>
 
                 <h4 class="fw-semibold mb-2">{{$product->product_name}}</h4>

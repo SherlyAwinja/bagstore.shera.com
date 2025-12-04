@@ -21,6 +21,8 @@
     <!-- main stylesheet -->
     <link rel="stylesheet" href="{{asset('home_asset/css/style.css')}}">
 
+    @livewireStyles
+
     <!-- title -->
     <title>QuickCart || Details</title>
   </head>
@@ -80,32 +82,18 @@
               <i class="fa-solid fa-angle-down"></i>
             </a>
 
-            <!-- dropdown links -->
+            <!-- dropdown links (driven from real categories) -->
+            @php
+              $navCategories = \App\Models\Category::all();
+            @endphp
             <ul class="dropdown-links">
-              <li>
-                <a href="#!">Accessories</a>
-              </li>
-              <li>
-                <a href="#!">Beauty</a>
-              </li>
-              <li>
-                <a href="#!">Electronics</a>
-              </li>
-              <li>
-                <a href="#!">Fashion</a>
-              </li>
-              <li>
-                <a href="#!">Kids</a>
-              </li>
-              <li>
-                <a href="#!">Shoes</a>
-              </li>
-              <li>
-                <a href="#!">Sports</a>
-              </li>
-              <li>
-                <a href="#!">Watches</a>
-              </li>
+              @foreach ($navCategories as $category)
+                <li>
+                  <a href="{{ route('home', ['category' => $category->id]) }}">
+                    {{ $category->category_name }}
+                  </a>
+                </li>
+              @endforeach
             </ul>
           </li>
 
@@ -238,6 +226,7 @@
 
     <!-- main js -->
     <script src="{{asset('home_asset/js/app.js')}}"></script>
+    @livewireScripts
 
     <!-- owl carousel init -->
     <script>
