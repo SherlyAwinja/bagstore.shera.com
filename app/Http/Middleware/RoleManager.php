@@ -13,42 +13,51 @@ class RoleManager
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  string  $role  The required role (admin, vendor, or customer)
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, string $role): Response
     {
+        // Check if user is authenticated - redirect to login with intended URL
         if (!Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->guest(route('login'));
         }
         
-        $authUserRole = Auth::user()->role;
+        $user = Auth::user();
+        $authUserRole = $user->role ?? null;
 
-        switch ($role) {
-            case 'admin':
-                if ($authUserRole == 0) {
-                    return $next($request);
-                }
-                break;
-            case 'vendor':
-                if ($authUserRole == 1) {
-                    return $next($request);
-                }
-                break;
-            case 'customer':
-                if ($authUserRole == 2) {
-                    return $next($request);
-                }
-                break;
+        // Validate role parameter
+        $validRoles = ['admin', 'vendor', 'customer'];
+        if (!in_array($role, $validRoles)) {
+            // Invalid role parameter - redirect to home
+            return redirect()->route('home');
         }
 
+        // Map role names to role values
+        $roleMap = [
+            'admin' => 0,
+            'vendor' => 1,
+            'customer' => 2,
+        ];
+
+        $requiredRoleValue = $roleMap[$role];
+
+        // Check if user has the required role
+        if ($authUserRole === $requiredRoleValue) {
+            return $next($request);
+        }
+
+        // User doesn't have the required role - redirect to their appropriate dashboard
         switch ($authUserRole) {
-            case 0:
+            case 0: // Admin
                 return redirect()->route('admin');
-            case 1:
+            case 1: // Vendor
                 return redirect()->route('vendor');
-            case 2:
+            case 2: // Customer
                 return redirect()->route('dashboard');
+            default:
+                // Invalid or null role - redirect to login
+                Auth::logout();
+                return redirect()->route('login')->with('error', 'Invalid user role. Please contact administrator.');
         }
-
-        return redirect()->route('login');
     }
 }
